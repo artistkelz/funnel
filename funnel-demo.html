@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Free Guide — Scale Your Business in 90 Days</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,700;1,300;1,600&family=Epilogue:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0D0D0D;
+      --surface: #161616;
+      --border: rgba(255,255,255,0.07);
+      --white: #F5F5F3;
+      --muted: #7A7A78;
+      --gold: #D4A84B;
+      --gold-light: #F0C96E;
+      --gold-dim: rgba(212,168,75,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Epilogue', sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Background texture */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(212,168,75,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(212,168,75,0.04) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* PAGE WRAPPER */
+    .page { position: relative; z-index: 1; }
+
+    /* NAV */
+    nav {
+      padding: 24px 48px;
+      display: flex;
+      justify-content: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand {
+      font-family: 'Fraunces', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+    }
+
+    /* HERO */
+    .hero {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 80px 32px 60px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gold-dim);
+      border: 1px solid rgba(212,168,75,0.25);
+      padding: 6px 18px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 36px;
+    }
+
+    .hero-headline {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .hero-headline em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--muted);
+      font-weight: 300;
+      max-width: 520px;
+      margin: 0 auto 48px;
+    }
+
+    /* FORM CARD */
+    .form-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 48px;
+      max-width: 520px;
+      margin: 0 auto 48px;
+      position: relative;
+    }
+    .form-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .form-title {
+      font-family: 'Fraunces', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    .form-subtitle {
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 32px;
+      font-weight: 300;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form-label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .form-input {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 14px 18px;
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .form-input::placeholder { color: rgba(122,122,120,0.5); }
+    .form-input:focus { border-color: var(--gold); }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--gold);
+      color: var(--bg);
+      padding: 16px;
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      border: none;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.3s, transform 0.2s;
+      text-transform: uppercase;
+    }
+    .btn-submit:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+
+    .form-privacy {
+      font-size: 0.68rem;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 16px;
+      font-weight: 300;
+      opacity: 0.6;
+    }
+    .form-privacy span { color: var(--gold); }
+
+    /* BENEFITS */
+    .benefits {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+
+    .benefits-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .benefit-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 32px 28px;
+      text-align: center;
+      transition: border-color 0.3s;
+    }
+    .benefit-item:hover { border-color: rgba(212,168,75,0.3); }
+
+    .benefit-icon {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .benefit-title {
+      font-family: 'Fraunces', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .benefit-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* SOCIAL PROOF */
+    .proof {
+      border-top: 1px solid var(--border);
+      padding: 60px 32px;
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .proof-num {
+      font-family: 'Fraunces', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .proof-label {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 40px;
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      text-align: left;
+    }
+    .testimonial {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 28px;
+    }
+    .testimonial-text {
+      font-family: 'Fraunces', serif;
+      font-size: 0.92rem;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .testimonial-author {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .testimonial-role {
+      font-size: 0.7rem;
+      color: var(--muted);
+      font-weight: 300;
+      margin-top: 2px;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 48px;
+      text-align: center;
+    }
+    .footer-text {
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-weight: 300;
+      opacity: 0.5;
+    }
+
+    /* ANIMATIONS */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 600px) {
+      nav { padding: 20px 24px; }
+      .hero { padding: 60px 24px 40px; }
+      .form-card { padding: 32px 24px; }
+      .benefits-grid { grid-template-columns: 1fr; }
+      .testimonials { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="page" id="landingPage">
+
+  <nav>
+    <div class="nav-brand">GrowthBlueprint</div>
+  </nav>
+
+  <div class="hero fade-up">
+    <div class="hero-badge">✦ Free Download — Limited Time</div>
+    <h1 class="hero-headline">Scale your business<br>in <em>90 days</em> — or less</h1>
+    <p class="hero-sub">The exact framework 2,400+ entrepreneurs used to double their revenue without burning out. Get the free guide delivered instantly.</p>
+  </div>
+
+  <div class="form-card fade-up" style="transition-delay:0.15s">
+    <div class="form-title">Get Instant Access</div>
+    <div class="form-subtitle">Join 2,400+ founders — free, no spam, ever.</div>
+    <div class="form-group">
+      <label class="form-label">First Name</label>
+      <input class="form-input" type="text" placeholder="Your first name" id="firstName"/>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Email Address</label>
+      <input class="form-input" type="email" placeholder="you@example.com" id="emailInput"/>
+    </div>
+    <button class="btn-submit" onclick="handleSubmit()">Send Me the Free Guide →</button>
+    <div class="form-privacy">🔒 Your info is safe. <span>No spam, ever.</span> Unsubscribe anytime.</div>
+  </div>
+
+  <div class="benefits fade-up" style="transition-delay:0.2s">
+    <div class="benefits-label">What's inside the guide</div>
+    <div class="benefits-grid">
+      <div class="benefit-item">
+        <span class="benefit-icon">🗺️</span>
+        <div class="benefit-title">90-Day Roadmap</div>
+        <div class="benefit-desc">A week-by-week action plan you can follow starting today — no guesswork.</div>
+      </div>
+      <div class="benefit-item">
+        <span class="benefit-icon">📈</span>
+        <div class="benefit-title">Revenue Levers</div>
+        <div class="benefit-desc">The 5 highest-impact moves that consistently double revenue in under 3 months.</div>
+      </div>
+      <div class="benefit-item">
+        <span class="benefit-icon">⚙️</span>
+        <div class="benefit-title">Automation Stack</div>
+        <div class="benefit-desc">The exact tools to remove yourself from the busywork so you can focus on growth.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="proof fade-up">
+    <div class="proof-num">2,400+</div>
+    <div class="proof-label">entrepreneurs already growing with this framework</div>
+    <div class="testimonials">
+      <div class="testimonial">
+        <div class="testimonial-text">"I was skeptical, but followed the roadmap exactly. Hit my first $30k month in week 11."</div>
+        <div class="testimonial-author">Sarah K.</div>
+        <div class="testimonial-role">E-commerce founder, Toronto</div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-text">"The automation section alone saved me 15 hours a week. Wish I'd found this sooner."</div>
+        <div class="testimonial-author">Marcus T.</div>
+        <div class="testimonial-role">SaaS founder, Austin</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-text">© 2026 GrowthBlueprint · Privacy Policy · Unsubscribe anytime</div>
+  </footer>
+
+</div>
+
+<!-- THANK YOU PAGE (hidden initially) -->
+<div id="thankYouPage" style="display:none; position:relative; z-index:1;">
+
+  <nav>
+    <div class="nav-brand">GrowthBlueprint</div>
+  </nav>
+
+  <div style="max-width:600px; margin:0 auto; padding:100px 32px; text-align:center;">
+
+    <div style="
+      width:72px; height:72px;
+      background:rgba(212,168,75,0.12);
+      border:1px solid rgba(212,168,75,0.3);
+      border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.8rem;
+      margin:0 auto 32px;
+    ">✓</div>
+
+    <div style="
+      font-size:0.72rem; font-weight:600;
+      letter-spacing:0.15em; text-transform:uppercase;
+      color:var(--gold); margin-bottom:20px;
+    ">You're in!</div>
+
+    <h1 style="
+      font-family:'Fraunces',serif;
+      font-size:clamp(36px,5vw,60px);
+      font-weight:700; line-height:1.1;
+      letter-spacing:-0.02em;
+      color:var(--white); margin-bottom:24px;
+    ">Check your inbox,<br><em style="font-style:italic;font-weight:300;color:var(--gold)">it's on its way.</em></h1>
+
+    <p style="
+      font-size:0.95rem; line-height:1.8;
+      color:var(--muted); font-weight:300;
+      max-width:420px; margin:0 auto 48px;
+    ">Your free guide is headed to <strong id="confirmedEmail" style="color:var(--white);font-weight:500;"></strong>. Check your spam folder if it doesn't arrive in 2 minutes.</p>
+
+    <div style="
+      background:var(--surface);
+      border:1px solid var(--border);
+      padding:32px 40px;
+      margin-bottom:48px;
+      position:relative;
+    ">
+      <div style="
+        position:absolute; top:0; left:0; right:0; height:2px;
+        background:linear-gradient(90deg,transparent,var(--gold),transparent);
+      "></div>
+      <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;">While you wait</div>
+      <div style="display:flex;flex-direction:column;gap:14px;text-align:left;">
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <span style="color:var(--gold);font-size:0.85rem;margin-top:2px;">01</span>
+          <div>
+            <div style="font-size:0.88rem;font-weight:500;color:var(--white);margin-bottom:4px;">Add us to your contacts</div>
+            <div style="font-size:0.8rem;color:var(--muted);font-weight:300;">So the guide never ends up in spam.</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <span style="color:var(--gold);font-size:0.85rem;margin-top:2px;">02</span>
+          <div>
+            <div style="font-size:0.88rem;font-weight:500;color:var(--white);margin-bottom:4px;">Join our community</div>
+            <div style="font-size:0.8rem;color:var(--muted);font-weight:300;">2,400+ founders sharing wins daily.</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <span style="color:var(--gold);font-size:0.85rem;margin-top:2px;">03</span>
+          <div>
+            <div style="font-size:0.88rem;font-weight:500;color:var(--white);margin-bottom:4px;">Follow on LinkedIn</div>
+            <div style="font-size:0.8rem;color:var(--muted);font-weight:300;">Daily tips on scaling without burning out.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a href="#" onclick="showLanding()" style="
+      font-size:0.75rem; color:var(--muted);
+      text-decoration:none; border-bottom:1px solid var(--border);
+      padding-bottom:2px;
+    ">← Back to landing page</a>
+
+  </div>
+
+  <footer>
+    <div class="footer-text">© 2026 GrowthBlueprint · Privacy Policy · Unsubscribe anytime</div>
+  </footer>
+
+</div>
+
+<script>
+  // Scroll animations
+  const faders = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  faders.forEach(el => observer.observe(el));
+  setTimeout(() => faders.forEach(el => el.classList.add('visible')), 150);
+
+  function handleSubmit() {
+    const name = document.getElementById('firstName').value.trim();
+    const email = document.getElementById('emailInput').value.trim();
+    if (!name || !email) {
+      alert('Please fill in your name and email!');
+      return;
+    }
+    document.getElementById('confirmedEmail') .textContent = email;
+    document.getElementById('landingPage').style.display = 'none';
+    document.getElementById('thankYouPage').style.display = 'block';
+    window.scrollTo(0, 0);
+  }
+
+  function showLanding() {
+    document.getElementById('thankYouPage').style.display = 'none';
+    document.getElementById('landingPage').style.display = 'block';
+    window.scrollTo(0, 0);
+  }
+</script>
+</body>
+</html>
